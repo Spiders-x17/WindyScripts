@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WindyScripts - SAMP Scripts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0f0a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        /* Menu */
+       .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00ff88;
+            z-index: 1000;
+            padding: 15px 20px;
+        }
+       .nav-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #00ff88;
+        }
+       .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+       .menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: #00ff88;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+       .menu-btn:hover span {
+            background: #00cc6a;
+        }
+        
+       .side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: #0f1a0f;
+            border-left: 2px solid #00ff88;
+            padding: 80px 20px 20px;
+            transition: right 0.3s;
+            z-index: 999;
+        }
+       .side-menu.show {
+            right: 0;
+        }
+       .side-menu a {
+            display: block;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+       .side-menu a:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+       .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            z-index: 998;
+        }
+       .overlay.show { display: block; }
+        
+       .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 100px 20px 20px; 
+        }
+        
+        /* إخفاء الصفحات */
+       .page {
+            display: none;
+        }
+       .page.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Hero */
+       .hero {
+            text-align: center; 
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border-radius: 20px; 
+            margin-bottom: 40px; 
+            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+       .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+       .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3.2rem; 
+            margin-bottom: 10px;
+            color: #0a0f0a;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+       .hero-subtitle { 
+            font-size: 1.2rem; 
+            color: #0a1a0a; 
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+       .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+       .action-btn {
+            padding: 14px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid #0a0f0a;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+       .btn-store {
+            background: #0a0f0a;
+            color: #00ff88;
+        }
+       .btn-store:hover {
+            background: #00ff88;
+            color: #0a0f0a;
+            transform: translateY(-2px);
+        }
+       .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+       .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+        }
+        
+        /* قسم المطور */
+       .dev-card {
+            background: #0f1a0f;
+            border: 2px solid #00ff88;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 40px;
+        }
+       .dev-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+       .dev-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #00ff88;
+            object-fit: cover;
+            box-shadow: 0 5px 25px rgba(0, 255, 136, 0.4);
+        }
+       .dev-info h3 {
+            color: #00ff88;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+       .dev-info.tag {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+       .dev-bio {
+            color: #b3b3b3;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+       .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+       .stat-box {
+            background: #0a0f0a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #1a2a1a;
+            text-align: center;
+        }
+       .stat-box.number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #00ff88;
+            display: block;
+        }
+       .stat-box.label {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* عنوان الصفحة */
+       .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+       .page-title h2 {
+            color: #00ff88;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+       .page-title p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        /* المنتج */
+       .product {
+            background: #0f1a0f; 
+            border: 2px solid #00ff88;
+            border-radius: 16px; 
+            overflow: hidden; 
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+        }
+        
+       .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+       .product-img:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+       .product a {
+            display: block;
+            text-decoration: none;
+            overflow: hidden;
+        }
+        
+       .product-content { padding: 30px; }
+       .product h3 { 
+            color: #00ff88; 
+            margin-bottom: 15px; 
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+       .product p { 
+            color: #b3b3b3; 
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+       .price { 
+            font-size: 2.5rem; 
+            color: #00ff88; 
+            font-weight: 700; 
+            margin: 20px 0;
+        }
+       .buy-btn {
+            display: inline-block; 
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #0a0f0a; 
+            padding: 16px 30px; 
+            border-radius: 12px;
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s;
+            cursor: pointer; 
+            border: none; 
+            width: 100%; 
+            font-size: 18px;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+       .buy-btn:hover { 
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
+        }
+        
+        /* الفورم */
+       .form-section {
+            background: #0f1a0f; 
+            border: 2px solid #00ff88;
+            border-radius: 16px; 
+            padding: 35px; 
+            margin-top: 40px; 
+            display: none;
+        }
+       .form-section.show { 
+            display: block; 
+            animation: fadeIn 0.4s; 
+        }
+       .form-section h2 { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            color: #00ff88; 
+            font-size: 1.8rem; 
+        }
+       .close-form {
+            float: left; 
+            background: #ff3333; 
+            color: #fff; 
+            border: none;
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+       .payment-info {
+            background: #0a0f0a; 
+            border: 1px solid #00ff88;
+            border-radius: 12px; 
+            padding: 25px; 
+            margin-bottom: 30px;
+        }
+       .payment-info h3 { color: #00ff88; margin-bottom: 15px; }
+       .payment-info p { margin-bottom: 10px; color: #d1d5db; }
+        
+       .custom-form input,.custom-form select {
+            width: 100%; 
+            padding: 15px; 
+            margin-bottom: 20px;
+            background: #0a0f0a; 
+            border: 1px solid #333; 
+            border-radius: 10px;
+            color: #e2e8f0; 
+            font-size: 16px;
+            font-family: 'Cairo';
+            transition: all 0.3s;
+        }
+       .custom-form input:focus,.custom-form select:focus {
+            border-color: #00ff88;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+       .custom-form input[readonly] {
+            background: #0a0f0a;
+            border-color: #00ff88;
+            color: #00ff88;
+            font-weight: 700;
+        }
+       .custom-form label { 
+            display: block; 
+            margin-bottom: 8px; 
+            color: #d1d5db;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+       .submit-btn {
+            width: 100%; 
+            padding: 16px; 
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #0a0f0a; 
+            border: none; 
+            border-radius: 10px; 
+            font-size: 17px;
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+       .submit-btn:hover { 
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
+        }
+        
+        footer {
+            text-align: center; 
+            margin-top: 60px; 
+            padding: 30px;
+            color: #666; 
+            border-top: 1px solid #333;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; } 
+           .container { padding: 15px; }
+           .product-img { height: 250px; }
+           .hero { padding: 50px 15px; }
+           .dev-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">WindyScripts</div>
+            <button class="menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="side-menu" id="sideMenu">
+        <a href="#" onclick="showPage('home'); toggleMenu()">🏠 Home الرئيسية</a>
+        <a href="#" onclick="showPage('store'); toggleMenu()">🛒 Store المتجر</a>
+        <a href="#" onclick="showPage('about'); toggleMenu()">👤 About من نحن</a>
+        <a href="#" onclick="showPage('payment'); toggleMenu()">💳 Payment طريقة الدفع</a>
+        <a href="https://wa.me/212787191554" target="_blank">📱 WhatsApp تواصل</a>
+    </div>
+
+    <div class="container">
+        <!-- الصفحة الرئيسية -->
+        <div class="page active" id="homePage">
+            <div class="hero">
+                <video class="hero-video" autoplay muted loop>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+                <div class="hero-content">
+                    <h1>WindyScripts</h1>
+                    <p class="hero-subtitle">Professional SAMP Scripts | سكريبتات احترافية</p>
+                    <div class="action-buttons">
+                        <button onclick="showPage('store')" class="action-btn btn-store">🛒 Store المتجر</button>
+                        <a href="https://wa.me/212787191554" target="_blank" class="action-btn btn-whatsapp">📱 WhatsApp تواصل</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم المطور -->
+            <div class="dev-card" id="about">
+                <div class="dev-header">
+                    <img src="https://i.pravatar.cc/200?img=12" alt="Spiders_X17" class="dev-avatar">
+                    <div class="dev-info">
+                        <h3>Spiders_X17</h3>
+                        <span class="tag">SAMP Developer | مبرمج SAMP</span>
+                    </div>
+                </div>
+                <p class="dev-bio">
+                    بديت ف SAMP نهار <strong>2/1/2025</strong> ودابا <strong>2026</strong> وباقي متمر Developer. 
+                    طورات كتر من <strong>50 سيرفر</strong> مغربي. كنتبرمج سيستمات احترافية خفيفة ومضمونة 100%. 
+                    الهدف ديالي نعطيك سكريبت نقي يخدم ليك بلا مشاكل ولا لاغ.
+                </p>
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="number">+50</span>
+                        <span class="label">Servers | سيرفر</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">2025</span>
+                        <span class="label">Started | البداية</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">24/7</span>
+                        <span class="label">Support | دعم</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحة المتجر -->
+        <div class="page" id="storePage">
+            <div class="page-title">
+                <h2>🛒 Store | المتجر</h2>
+                <p>Professional Scripts | سكريبتات احترافية</p>
+            </div>
+
+            <div class="product">
+                <a href="https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg" target="_blank">
+                    <img src="https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg" alt="WindyScripts System Permis" class="product-img">
+                </a>
+                <div class="product-content">
+                    <h3>WindyScripts - System Permis</h3>
+                    <p>هاداك السيستم ديال ما يمكنش تطلع ف شي طوموبيل تا يكون عندك بيرمي. إلى ما عندكش البيرمي ما غاديش تقدر تسوق. سيستم حماية ضد السراقة</p>
+                    <div class="price">15 درهم</div>
+                    <button class="buy-btn" onclick="showForm('WindyScripts System Permis', '15')">Buy Now | شري دابا</button>
+                </div>
+            </div>
+        </div>
+        
+       
+        <!-- صفحة طريقة الدفع -->
+        <div class="page" id="paymentPage">
+            <div class="page-title">
+                <h2>💳 Payment | طريقة الدفع</h2>
+                <p>Orange Recharge | كارت أورنج</p>
+            </div>
+
+            <div class="payment-info">
+                <h3>طريقة الدفع بـ Orange Recharge</h3>
+                <p><strong>1.</strong> شري كارت Orange Recharge من الحانوت</p>
+                <p><strong>2.</strong> خربش الكود ديالها</p>
+                <p><strong>3.</strong> عمر الفورم التحت بالكود</p>
+                <p><strong>4.</strong> صيفط الطلب وغادي نتواصلو معاك فالواتساب</p>
+            </div>
+        </div>
+
+        <!-- الفورم -->
+        <div class="form-section" id="orderForm">
+            <button class="close-form" onclick="hideForm()">×</button>
+            <h2>Order Script | طلب السكريبت</h2>
+            
+            <form class="custom-form" id="whatsappForm">
+                <label>Script Name | اسم السكريبت</label>
+                <input type="text" id="product" readonly>
+
+                <label>NAME RP *</label>
+                <input type="text" id="username" placeholder="الاسم ديالك فالسيرفر" required>
+
+                <label>Amount | المبلغ *</label>
+                <input type="text" id="amount" readonly>
+               
+                <label>Recharge Code | كود الريشارج *</label>
+                <input type="text" id="recharge" placeholder="كود Orange Recharge" required>
+
+                <button type="submit" class="submit-btn">Send Order | إرسال الطلب</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>© 2026 WindyScripts - جميع الحقوق محفوظة</p>
+            <p>للتواصل: WhatsApp 0787191554</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('show');
+            document.getElementById('overlay').classList.toggle('show');
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('orderForm').classList.remove('show');
+            
+            if(page === 'home') {
+                document.getElementById('homePage').classList.add('active');
+            } else if(page === 'store') {
+                document.getElementById('storePage').classList.add('active');
+            } else if(page === 'about') {
+                document.getElementById('homePage').classList.add('active');
+                document.getElementById('about').scrollIntoView({behavior: 'smooth'});
+            } else if(page === 'payment') {
+                document.getElementById('paymentPage').classList.add('active');
+            }
+            
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function showForm(productName, price) {
+            document.getElementById('orderForm').classList.add('show');
+            document.getElementById('product').value = productName;
+            document.getElementById('amount').value = price + ' درهم';
+            document.getElementById('orderForm').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        function hideForm() {
+            document.getElementById('orderForm').classList.remove('show');
+        }
+
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const yourNumber = "212787191554"; 
+            
+            const product = document.getElementById('product').value;
+            const username = document.getElementById('username').value;
+            const amount = document.getElementById('amount').value;
+            const recharge = document.getElementById('recharge').value;
+            
+            let message = `سلام WindyScripts 👋%0A%0A*طلب جديد*%0A%0AHadak chi li chriti: ${product}%0ANAME RP: ${username}%0ARecharge Amount: ${amount}%0ARecharge: ${recharge}%0A%0Aصيفطت كود Recharge، عافاك تأكد وصيفط ليا السكريبت.`;
+            
+            const whatsappURL = `https://wa.me/${yourNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        showPage('home');
+    </script>
+</body>
+</html>
