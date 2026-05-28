@@ -3,42 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WindyScripts - SAMP Scripts</title>
+    <title>WindyScripts - SAMP Scripts Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Cairo', sans-serif;
-            background: #0a0f0a;
+            background: #0a0a0a;
             color: #e2e8f0;
             line-height: 1.6;
         }
-        
-        /* Menu */
-       .navbar {
+
+    .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 15, 10, 0.95);
+            background: rgba(15, 15, 15, 0.98);
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid #00ff88;
+            border-bottom: 3px solid #ff0040;
             z-index: 1000;
             padding: 15px 20px;
+            box-shadow: 0 5px 30px rgba(255, 0, 64, 0.3);
         }
-       .nav-content {
-            max-width: 900px;
+    .nav-content {
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-       .logo {
-            font-size: 1.5rem;
+    .logo {
+            font-size: 1.8rem;
             font-weight: 900;
-            color: #00ff88;
+            color: #ff0040;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-       .menu-btn {
+    .menu-btn {
             background: none;
             border: none;
             cursor: pointer;
@@ -46,33 +47,32 @@
             flex-direction: column;
             gap: 5px;
         }
-       .menu-btn span {
+    .menu-btn span {
             width: 25px;
             height: 3px;
-            background: #00ff88;
+            background: #ff0040;
             border-radius: 2px;
             transition: all 0.3s;
         }
-       .menu-btn:hover span {
-            background: #00cc6a;
+    .menu-btn:hover span {
+            background: #ff3366;
+            box-shadow: 0 0 10px #ff0040;
         }
-        
-       .side-menu {
+
+    .side-menu {
             position: fixed;
             top: 0;
             right: -300px;
             width: 300px;
             height: 100vh;
-            background: #0f1a0f;
-            border-left: 2px solid #00ff88;
+            background: #0f0f0f;
+            border-left: 3px solid #ff0040;
             padding: 80px 20px 20px;
             transition: right 0.3s;
             z-index: 999;
         }
-       .side-menu.show {
-            right: 0;
-        }
-       .side-menu a {
+    .side-menu.show { right: 0; }
+    .side-menu a {
             display: block;
             color: #e2e8f0;
             text-decoration: none;
@@ -81,372 +81,454 @@
             border-radius: 10px;
             transition: all 0.3s;
             font-weight: 600;
+            border: 1px solid transparent;
         }
-       .side-menu a:hover {
-            background: rgba(0, 255, 136, 0.1);
-            color: #00ff88;
+    .side-menu a:hover {
+            background: rgba(255, 0, 64, 0.15);
+            color: #ff0040;
+            border-color: #ff0040;
+            box-shadow: 0 0 15px rgba(255, 0, 64, 0.3);
         }
-       .overlay {
+    .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             display: none;
             z-index: 998;
         }
-       .overlay.show { display: block; }
-        
-       .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 100px 20px 20px; 
+    .overlay.show { display: block; }
+
+    .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 20px;
         }
-        
-        /* إخفاء الصفحات */
-       .page {
-            display: none;
-        }
-       .page.active {
-            display: block;
-            animation: fadeIn 0.4s;
-        }
+
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* Hero */
-       .hero {
-            text-align: center; 
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-            border-radius: 20px; 
-            margin-bottom: 40px; 
-            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.4);
+
+    .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ff0040 0%, #cc0033 50%, #990026 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 60px rgba(255, 0, 64, 0.5);
             position: relative;
             overflow: hidden;
+            border: 2px solid #ff0040;
         }
-       .hero-video {
+    .hero-video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.3;
+            opacity: 0.2;
         }
-       .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+    .hero-content { position: relative; z-index: 2; }
         h1 {
-            font-size: 3.2rem; 
-            margin-bottom: 10px;
-            color: #0a0f0a;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #fff;
             font-weight: 900;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-       .hero-subtitle { 
-            font-size: 1.2rem; 
-            color: #0a1a0a; 
+    .hero-subtitle {
+            font-size: 1.3rem;
+            color: #ffe6ec;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        
-       .action-buttons {
+
+    .action-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 25px;
+            margin-top: 30px;
         }
-       .action-btn {
-            padding: 14px 30px;
+    .action-btn {
+            padding: 16px 35px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s;
-            border: 2px solid #0a0f0a;
-            font-size: 1rem;
+            border: 2px solid #fff;
+            font-size: 1.1rem;
             cursor: pointer;
+            text-transform: uppercase;
         }
-       .btn-store {
-            background: #0a0f0a;
-            color: #00ff88;
+    .btn-store {
+            background: #0a0a0a;
+            color: #ff0040;
+            border-color: #0a0a0a;
         }
-       .btn-store:hover {
-            background: #00ff88;
-            color: #0a0f0a;
-            transform: translateY(-2px);
+    .btn-store:hover {
+            background: #ff0040;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 64, 0.6);
         }
-       .btn-whatsapp {
+    .btn-whatsapp {
             background: #25D366;
             color: #fff;
+            border-color: #25D366;
         }
-       .btn-whatsapp:hover {
+    .btn-whatsapp:hover {
             background: #1da851;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
         }
-        
-        /* قسم المطور */
-       .dev-card {
-            background: #0f1a0f;
-            border: 2px solid #00ff88;
-            border-radius: 16px;
-            padding: 35px;
+
+    .dev-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 3px solid #ff0040;
+            border-radius: 20px;
+            padding: 40px;
             margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
         }
-       .dev-header {
+    .dev-header {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-       .dev-avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid #00ff88;
-            object-fit: cover;
-            box-shadow: 0 5px 25px rgba(0, 255, 136, 0.4);
-        }
-       .dev-info h3 {
-            color: #00ff88;
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-       .dev-info.tag {
-            display: inline-block;
-            background: rgba(0, 255, 136, 0.15);
-            color: #00ff88;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-       .dev-bio {
-            color: #b3b3b3;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 25px;
-        }
-       .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-        }
-       .stat-box {
-            background: #0a0f0a;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #1a2a1a;
-            text-align: center;
-        }
-       .stat-box.number {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #00ff88;
-            display: block;
-        }
-       .stat-box.label {
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-        
-        /* عنوان الصفحة */
-       .page-title {
-            text-align: center;
             margin-bottom: 30px;
         }
-       .page-title h2 {
-            color: #00ff88;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-       .page-title p {
-            color: #888;
-            font-size: 1.1rem;
-        }
-        
-        /* المنتج */
-       .product {
-            background: #0f1a0f; 
-            border: 2px solid #00ff88;
-            border-radius: 16px; 
-            overflow: hidden; 
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
-        }
-        
-       .product-img {
-            width: 100%;
-            height: 300px;
+    .dev-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ff0040;
             object-fit: cover;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
         }
-       .product-img:hover {
-            transform: scale(1.02);
-            filter: brightness(1.1);
+    .dev-info h3 {
+            color: #ff0040;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-       .product a {
-            display: block;
-            text-decoration: none;
-            overflow: hidden;
-        }
-        
-       .product-content { padding: 30px; }
-       .product h3 { 
-            color: #00ff88; 
-            margin-bottom: 15px; 
-            font-size: 1.8rem;
+    .dev-info.tag {
+            display: inline-block;
+            background: rgba(255, 0, 64, 0.2);
+            color: #ff0040;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
             font-weight: 700;
+            border: 1px solid #ff0040;
         }
-       .product p { 
-            color: #b3b3b3; 
+    .dev-bio {
+            color: #d1d5db;
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+    .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+    .stat-box {
+            background: #0a0a0a;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #1a1a1a;
+            text-align: center;
+            transition: all 0.3s;
+        }
+    .stat-box:hover {
+            border-color: #ff0040;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 64, 0.3);
+        }
+    .stat-box.number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ff0040;
+            display: block;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
+        }
+    .stat-box.label {
+            color: #888;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+    .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    .page-title h2 {
+            color: #ff0040;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-shadow: 0 0 30px rgba(255, 0, 64, 0.8);
+        }
+    .page-title p {
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+    .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+    .category-btn {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 3px solid #ff0040;
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    .category-btn:hover {
+            background: rgba(255, 0, 64, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(255, 0, 64, 0.4);
+        }
+    .category-btn.icon {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            font-size: 1.1rem;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 64, 0.8));
+        }
+    .category-btn h3 {
+            color: #ff0040;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 0, 64, 0.6);
+        }
+
+    .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+    .product {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 3px solid #ff0040;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
+            transition: all 0.3s;
+        }
+    .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255, 0, 64, 0.5);
+        }
+    .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+    .product-content { padding: 30px; }
+    .product h3 {
+            color: #ff0040;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 0, 64, 0.6);
+        }
+    .product p {
+            color: #b3b3b3;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
             line-height: 1.8;
         }
-       .price { 
-            font-size: 2.5rem; 
-            color: #00ff88; 
-            font-weight: 700; 
+    .price {
+            font-size: 2.3rem;
+            color: #ff0040;
+            font-weight: 900;
             margin: 20px 0;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-       .buy-btn {
-            display: inline-block; 
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-            color: #0a0f0a; 
-            padding: 16px 30px; 
+    .price.free {
+            color: #25D366;
+            text-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
+        }
+    .buy-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
+            color: #fff;
+            padding: 16px 30px;
             border-radius: 12px;
-            text-decoration: none; 
-            font-weight: 700; 
+            text-decoration: none;
+            font-weight: 700;
             transition: all 0.3s;
-            cursor: pointer; 
-            border: none; 
-            width: 100%; 
-            font-size: 18px;
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
-        }
-       .buy-btn:hover { 
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
-        }
-        
-        /* الفورم */
-       .form-section {
-            background: #0f1a0f; 
-            border: 2px solid #00ff88;
-            border-radius: 16px; 
-            padding: 35px; 
-            margin-top: 40px; 
-            display: none;
-        }
-       .form-section.show { 
-            display: block; 
-            animation: fadeIn 0.4s; 
-        }
-       .form-section h2 { 
-            text-align: center; 
-            margin-bottom: 30px; 
-            color: #00ff88; 
-            font-size: 1.8rem; 
-        }
-       .close-form {
-            float: left; 
-            background: #ff3333; 
-            color: #fff; 
+            cursor: pointer;
             border: none;
-            width: 35px; 
-            height: 35px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 18px;
+            width: 100%;
+            font-size: 17px;
+            box-shadow: 0 5px 25px rgba(255, 0, 64, 0.5);
+            text-transform: uppercase;
         }
-        
-       .payment-info {
-            background: #0a0f0a; 
-            border: 1px solid #00ff88;
-            border-radius: 12px; 
-            padding: 25px; 
+    .buy-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px rgba(255, 0, 64, 0.7);
+        }
+    .buy-btn.free {
+            background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+        }
+    .buy-btn.free:hover {
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.7);
+        }
+
+    .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1a1a1a;
+            border: 2px solid #ff0040;
+            color: #ff0040;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
             margin-bottom: 30px;
+            transition: all 0.3s;
+            font-size: 1.05rem;
         }
-       .payment-info h3 { color: #00ff88; margin-bottom: 15px; }
-       .payment-info p { margin-bottom: 10px; color: #d1d5db; }
-        
-       .custom-form input,.custom-form select {
-            width: 100%; 
-            padding: 15px; 
-            margin-bottom: 20px;
-            background: #0a0f0a; 
-            border: 1px solid #333; 
-            border-radius: 10px;
-            color: #e2e8f0; 
+    .back-btn:hover {
+            background: rgba(255, 0, 64, 0.15);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.4);
+        }
+
+    .form-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 3px solid #ff0040;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            display: none;
+            box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
+        }
+    .form-section.show {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+    .form-section h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            color: #ff0040;
+            font-size: 2rem;
+            text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
+        }
+    .close-form {
+            float: left;
+            background: #ff0040;
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.6);
+        }
+
+    .payment-info {
+            background: #0a0a0a;
+            border: 2px solid #ff0040;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 35px;
+        }
+    .payment-info h3 { color: #ff0040; margin-bottom: 18px; font-size: 1.4rem; }
+    .payment-info p { margin-bottom: 12px; color: #d1d5db; font-size: 1.05rem; }
+
+    .custom-form input,.custom-form select {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 22px;
+            background: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 12px;
+            color: #e2e8f0;
             font-size: 16px;
             font-family: 'Cairo';
             transition: all 0.3s;
         }
-       .custom-form input:focus,.custom-form select:focus {
-            border-color: #00ff88;
+    .custom-form input:focus,.custom-form select:focus {
+            border-color: #ff0040;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 0 4px rgba(255, 0, 64, 0.15);
         }
-       .custom-form input[readonly] {
-            background: #0a0f0a;
-            border-color: #00ff88;
-            color: #00ff88;
+    .custom-form input[readonly] {
+            background: #0a0a0a;
+            border-color: #ff0040;
+            color: #ff0040;
             font-weight: 700;
         }
-       .custom-form label { 
-            display: block; 
-            margin-bottom: 8px; 
+    .custom-form label {
+            display: block;
+            margin-bottom: 10px;
             color: #d1d5db;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
-       .submit-btn {
-            width: 100%; 
-            padding: 16px; 
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-            color: #0a0f0a; 
-            border: none; 
-            border-radius: 10px; 
-            font-size: 17px;
-            font-weight: 700; 
-            cursor: pointer; 
+    .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 5px 30px rgba(255, 0, 64, 0.5);
+            text-transform: uppercase;
         }
-       .submit-btn:hover { 
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
+    .submit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 50px rgba(255, 0, 64, 0.7);
         }
-        
+
+    .recharge-field {
+            display: block;
+        }
+    .recharge-field.hide {
+            display: none;
+        }
+
         footer {
-            text-align: center; 
-            margin-top: 60px; 
-            padding: 30px;
-            color: #666; 
-            border-top: 1px solid #333;
+            text-align: center;
+            margin-top: 70px;
+            padding: 35px;
+            color: #666;
+            border-top: 2px solid #1a1a1a;
         }
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; } 
-           .container { padding: 15px; }
-           .product-img { height: 250px; }
-           .hero { padding: 50px 15px; }
-           .dev-header { flex-direction: column; text-align: center; }
+            h1 { font-size: 2.5rem; }
+       .container { padding: 15px; }
+       .product-img { height: 200px; }
+       .hero { padding: 60px 15px; }
+       .dev-header { flex-direction: column; text-align: center; }
+       .categories { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">WindyScripts</div>
@@ -458,7 +540,6 @@
         </div>
     </nav>
 
-    <!-- Side Menu -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="side-menu" id="sideMenu">
         <a href="#" onclick="showPage('home'); toggleMenu()">🏠 Home الرئيسية</a>
@@ -469,7 +550,6 @@
     </div>
 
     <div class="container">
-        <!-- الصفحة الرئيسية -->
         <div class="page active" id="homePage">
             <div class="hero">
                 <video class="hero-video" autoplay muted loop>
@@ -485,7 +565,6 @@
                 </div>
             </div>
 
-            <!-- قسم المطور -->
             <div class="dev-card" id="about">
                 <div class="dev-header">
                     <img src="https://i.pravatar.cc/200?img=12" alt="Spiders_X17" class="dev-avatar">
@@ -495,8 +574,8 @@
                     </div>
                 </div>
                 <p class="dev-bio">
-                    بديت ف SAMP نهار <strong>2/1/2025</strong> ودابا <strong>2026</strong> وباقي متمر Developer. 
-                    طورات كتر من <strong>50 سيرفر</strong> مغربي. كنتبرمج سيستمات احترافية خفيفة ومضمونة 100%. 
+                    بديت ف SAMP نهار <strong>2/1/2025</strong> ودابا <strong>2026</strong> وباقي متمر Developer.
+                    طورات كتر من <strong>50 سيرفر</strong> مغربي. كنتبرمج سيستمات احترافية خفيفة ومضمونة 100%.
                     الهدف ديالي نعطيك سكريبت نقي يخدم ليك بلا مشاكل ولا لاغ.
                 </p>
                 <div class="stats">
@@ -516,28 +595,48 @@
             </div>
         </div>
 
-        <!-- صفحة المتجر -->
         <div class="page" id="storePage">
             <div class="page-title">
                 <h2>🛒 Store | المتجر</h2>
-                <p>Professional Scripts | سكريبتات احترافية</p>
+                <p>اختر القسم | Choose Category</p>
             </div>
 
-            <div class="product">
-                <a href="https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg" target="_blank">
-                    <img src="https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg" alt="WindyScripts System Permis" class="product-img">
-                </a>
-                <div class="product-content">
-                    <h3>WindyScripts - System Permis</h3>
-                    <p>هاداك السيستم ديال ما يمكنش تطلع ف شي طوموبيل تا يكون عندك بيرمي. إلى ما عندكش البيرمي ما غاديش تقدر تسوق 
-                    <div class="price">15 درهم</div>
-                    <button class="buy-btn" onclick="showForm('WindyScripts System Permis', '15')">Buy Now | شري دابا</button>
+            <div class="categories">
+                <div class="category-btn" onclick="showCategory('systems')">
+                    <span class="icon">⚙️</span>
+                    <h3>Systems<br>سيستمات</h3>
+                </div>
+                <div class="category-btn" onclick="showCategory('gamemodes')">
+                    <span class="icon">🎮</span>
+                    <h3>Gamemodes<br>جيم مود</h3>
+                </div>
+                <div class="category-btn" onclick="showCategory('textdraws')">
+                    <span class="icon">🎨</span>
+                    <h3>Textdraws<br>تيكست درو</h3>
+                </div>
+                <div class="category-btn" onclick="showCategory('lua')">
+                    <span class="icon">📜</span>
+                    <h3>Lua<br>لوا</h3>
+                </div>
+                <div class="category-btn" onclick="showCategory('cleo')">
+                    <span class="icon">💉</span>
+                    <h3>Cleo<br>كليو</h3>
+                </div>
+                <div class="category-btn" onclick="showCategory('modpacks')">
+                    <span class="icon">📦</span>
+                    <h3>Modpacks<br>مود باك</h3>
                 </div>
             </div>
         </div>
-        
-       
-        <!-- صفحة طريقة الدفع -->
+
+        <div class="page" id="categoryPage">
+            <button class="back-btn" onclick="showPage('store')">← Back | رجوع</button>
+            <div class="page-title">
+                <h2 id="categoryTitle"></h2>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+
         <div class="page" id="paymentPage">
             <div class="page-title">
                 <h2>💳 Payment | طريقة الدفع</h2>
@@ -553,11 +652,10 @@
             </div>
         </div>
 
-        <!-- الفورم -->
         <div class="form-section" id="orderForm">
             <button class="close-form" onclick="hideForm()">×</button>
             <h2>Order Script | طلب السكريبت</h2>
-            
+
             <form class="custom-form" id="whatsappForm">
                 <label>Script Name | اسم السكريبت</label>
                 <input type="text" id="product" readonly>
@@ -567,9 +665,11 @@
 
                 <label>Amount | المبلغ *</label>
                 <input type="text" id="amount" readonly>
-               
-                <label>Recharge Code | كود الريشارج *</label>
-                <input type="text" id="recharge" placeholder="كود Orange Recharge" required>
+
+                <div class="recharge-field" id="rechargeField">
+                    <label>Recharge Code | كود الريشارج *</label>
+                    <input type="text" id="recharge" placeholder="كود Orange Recharge">
+                </div>
 
                 <button type="submit" class="submit-btn">Send Order | إرسال الطلب</button>
             </form>
@@ -582,6 +682,69 @@
     </div>
 
     <script>
+        const products = {
+            systems: [
+                {
+                    name: "System Permis",
+                    desc: "سيستم ما يمكنش تسوق تا يكون عندك بيرمي. حماية ضد السراقة",
+                    price: 15,
+                    img: "https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg"
+                },
+                {
+                    name: "Bank System Free",
+                    desc: "سيستم البنك مجاني للجميع - كامل",
+                    price: 0,
+                    download: "https://files.catbox.moe/putyourfile.zip", // بدل هاد الرابط
+                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Bank+System+FREE"
+                }
+            ],
+            gamemodes: [
+                {
+                    name: "Soon gm",
+                    desc: "",
+                    price: 0,
+                    download: "", // حط رابط التحميل هنا
+                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=RP+Gamemode+FREE"
+                }
+            ],
+            textdraws: [
+                {
+                    name: "Soon",
+                    desc: "",
+                    price: 0,
+                    download: "", // حط رابط التحميل هنا
+                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Modern+HUD"
+                }
+            ],
+            lua: [
+                {
+                    name: "Pc Style Zomm +monetloder small",
+                    desc: "يمكنك تحكم في شاشة الهاتف (zomm) + monetloder صغير [By WindyScripts]",
+                    price: 0,
+                    download: "https://www.mediafire.com/file/8dbnftsx5l9uk8y/PC+STYLE+FOV+MOBILE+SAMP.zip/file", // حط رابط التحميل هنا
+                    img: "https://i.postimg.cc/GpcrFwCH/Screenshot-20251014-224200-You-Tube.jpg"
+                }
+            ],
+            cleo: [
+                {
+                    name: "Soon",
+                    desc: "",
+                    price: 0,
+                    download: "", // حط رابط التحميل هنا
+                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Cleo+Mod"
+                }
+            ],
+            modpacks: [
+                {
+                    name: "Soon",
+                    desc: "",
+                    price: 0,
+                    download: "", // حط رابط التحميل هنا
+                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Modpack+2026"
+                }
+            ]
+        };
+
         function toggleMenu() {
             document.getElementById('sideMenu').classList.toggle('show');
             document.getElementById('overlay').classList.toggle('show');
@@ -590,7 +753,7 @@
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('orderForm').classList.remove('show');
-            
+
             if(page === 'home') {
                 document.getElementById('homePage').classList.add('active');
             } else if(page === 'store') {
@@ -601,33 +764,99 @@
             } else if(page === 'payment') {
                 document.getElementById('paymentPage').classList.add('active');
             }
-            
+
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function showCategory(cat) {
+            const categoryNames = {
+                systems: "⚙️ Systems | سيستمات",
+                gamemodes: "🎮 Gamemodes | جيم مود",
+                textdraws: "🎨 Textdraws | تيكست درو",
+                lua: "📜 Lua | لوا",
+                cleo: "💉 Cleo | كليو",
+                modpacks: "📦 Modpacks | مود باك"
+            };
+
+            document.getElementById('categoryTitle').textContent = categoryNames[cat];
+
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            products[cat].forEach(p => {
+                const isFree = p.price === 0;
+                grid.innerHTML += `
+                    <div class="product">
+                        <img src="${p.img}" alt="${p.name}" class="product-img">
+                        <div class="product-content">
+                            <h3>${p.name}</h3>
+                            <p>${p.desc}</p>
+                            <div class="price ${isFree? 'free' : ''}">${isFree? 'Free | مجاني' : p.price + ' درهم'}</div>
+                            <button class="buy-btn ${isFree? 'free' : ''}" onclick="handleBuy('${p.name}', ${p.price}, '${p.download || ''}')">
+                                ${isFree? 'Download | تحميل' : 'Buy Now | شري دابا'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('categoryPage').classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function handleBuy(productName, price, downloadLink) {
+            if(price === 0 && downloadLink) {
+                // إلا فابور + عندو رابط = تيليشارجي ديريكت
+                window.open(downloadLink, '_blank');
+            } else {
+                // إلا بالفلوس = حل الفورم
+                showForm(productName, price);
+            }
         }
 
         function showForm(productName, price) {
             document.getElementById('orderForm').classList.add('show');
             document.getElementById('product').value = productName;
-            document.getElementById('amount').value = price + ' درهم';
+            document.getElementById('amount').value = price === 0? 'Free | مجاني' : price + ' درهم';
+
+            const rechargeField = document.getElementById('rechargeField');
+            const rechargeInput = document.getElementById('recharge');
+            if(price === 0) {
+                rechargeField.classList.add('hide');
+                rechargeInput.required = false;
+                rechargeInput.value = 'FREE';
+            } else {
+                rechargeField.classList.remove('hide');
+                rechargeInput.required = true;
+                rechargeInput.value = '';
+            }
+
             document.getElementById('orderForm').scrollIntoView({behavior: 'smooth'});
         }
-        
+
         function hideForm() {
             document.getElementById('orderForm').classList.remove('show');
         }
 
         document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const yourNumber = "212787191554"; 
-            
+
+            const yourNumber = "212787191554";
+
             const product = document.getElementById('product').value;
             const username = document.getElementById('username').value;
             const amount = document.getElementById('amount').value;
             const recharge = document.getElementById('recharge').value;
-            
-            let message = `سلام WindyScripts 👋%0A%0A*طلب جديد*%0A%0AHadak chi li chriti: ${product}%0ANAME RP: ${username}%0ARecharge Amount: ${amount}%0ARecharge: ${recharge}%0A%0Aصيفطت كود Recharge، عافاك تأكد وصيفط ليا السكريبت.`;
-            
+
+            let message = `سلام WindyScripts 👋%0A%0A*طلب جديد*%0A%0AScript: ${product}%0ANAME RP: ${username}%0AAmount: ${amount}`;
+
+            if(recharge!== 'FREE') {
+                message += `%0ARecharge: ${recharge}`;
+            }
+
+            message += `%0A%0Aصيفطت الطلب عافاك صيفط ليا السكريبت.`;
+
             const whatsappURL = `https://wa.me/${yourNumber}?text=${message}`;
             window.open(whatsappURL, '_blank');
         });
