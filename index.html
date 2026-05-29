@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
 
-    .navbar {
+       .navbar {
             position: fixed;
             top: 0;
             width: 100%;
@@ -26,20 +26,20 @@
             padding: 15px 20px;
             box-shadow: 0 5px 30px rgba(255, 0, 64, 0.3);
         }
-    .nav-content {
+       .nav-content {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-    .logo {
+       .logo {
             font-size: 1.8rem;
             font-weight: 900;
             color: #ff0040;
             text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-    .menu-btn {
+       .menu-btn {
             background: none;
             border: none;
             cursor: pointer;
@@ -47,19 +47,19 @@
             flex-direction: column;
             gap: 5px;
         }
-    .menu-btn span {
+       .menu-btn span {
             width: 25px;
             height: 3px;
             background: #ff0040;
             border-radius: 2px;
             transition: all 0.3s;
         }
-    .menu-btn:hover span {
+       .menu-btn:hover span {
             background: #ff3366;
             box-shadow: 0 0 10px #ff0040;
         }
 
-    .side-menu {
+       .side-menu {
             position: fixed;
             top: 0;
             right: -300px;
@@ -71,8 +71,8 @@
             transition: right 0.3s;
             z-index: 999;
         }
-    .side-menu.show { right: 0; }
-    .side-menu a {
+       .side-menu.show { right: 0; }
+       .side-menu a {
             display: block;
             color: #e2e8f0;
             text-decoration: none;
@@ -83,13 +83,13 @@
             font-weight: 600;
             border: 1px solid transparent;
         }
-    .side-menu a:hover {
+       .side-menu a:hover {
             background: rgba(255, 0, 64, 0.15);
             color: #ff0040;
             border-color: #ff0040;
             box-shadow: 0 0 15px rgba(255, 0, 64, 0.3);
         }
-    .overlay {
+       .overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -99,25 +99,25 @@
             display: none;
             z-index: 998;
         }
-    .overlay.show { display: block; }
+       .overlay.show { display: block; }
 
-    .container {
+       .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 100px 20px 20px;
         }
 
-    .page { display: none; }
-    .page.active { display: block; animation: fadeIn 0.4s; }
+       .page { display: none; }
+       .page.active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-    .hero {
+       .hero {
             text-align: center;
             padding: 80px 20px;
-            background: linear-gradient(135deg, #ff0040 0%, #cc0033 50%, #990026 100%);
+            background: #000;
             border-radius: 20px;
             margin-bottom: 40px;
             box-shadow: 0 15px 60px rgba(255, 0, 64, 0.5);
@@ -125,7 +125,7 @@
             overflow: hidden;
             border: 2px solid #ff0040;
         }
-    .hero-video {
+       .hero-video {
             position: absolute;
             top: 0;
             left: 0;
@@ -133,31 +133,32 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.2;
+            z-index: 1;
         }
-    .hero-content { position: relative; z-index: 2; }
+       .hero-content { position: relative; z-index: 2; }
         h1 {
             font-size: 3.5rem;
             margin-bottom: 15px;
             color: #fff;
             font-weight: 900;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
-    .hero-subtitle {
+       .hero-subtitle {
             font-size: 1.3rem;
             color: #ffe6ec;
             font-weight: 700;
             margin-bottom: 30px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
-    .action-buttons {
+       .action-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 30px;
         }
-    .action-btn {
+       .action-btn {
             padding: 16px 35px;
             border-radius: 12px;
             text-decoration: none;
@@ -168,29 +169,29 @@
             cursor: pointer;
             text-transform: uppercase;
         }
-    .btn-store {
+       .btn-store {
             background: #0a0a0a;
             color: #ff0040;
             border-color: #0a0a0a;
         }
-    .btn-store:hover {
+       .btn-store:hover {
             background: #ff0040;
             color: #fff;
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(255, 0, 64, 0.6);
         }
-    .btn-whatsapp {
+       .btn-whatsapp {
             background: #25D366;
             color: #fff;
             border-color: #25D366;
         }
-    .btn-whatsapp:hover {
+       .btn-whatsapp:hover {
             background: #1da851;
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
         }
 
-    .dev-card {
+       .dev-card {
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border: 3px solid #ff0040;
             border-radius: 20px;
@@ -198,14 +199,14 @@
             margin-bottom: 40px;
             box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
         }
-    .dev-header {
+       .dev-header {
             display: flex;
             align-items: center;
             gap: 30px;
             flex-wrap: wrap;
             margin-bottom: 30px;
         }
-    .dev-avatar {
+       .dev-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -213,13 +214,13 @@
             object-fit: cover;
             box-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
         }
-    .dev-info h3 {
+       .dev-info h3 {
             color: #ff0040;
             font-size: 2rem;
             margin-bottom: 10px;
             text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-    .dev-info.tag {
+       .dev-info.tag {
             display: inline-block;
             background: rgba(255, 0, 64, 0.2);
             color: #ff0040;
@@ -229,18 +230,18 @@
             font-weight: 700;
             border: 1px solid #ff0040;
         }
-    .dev-bio {
+       .dev-bio {
             color: #d1d5db;
             font-size: 1.15rem;
             line-height: 2;
             margin-bottom: 30px;
         }
-    .stats {
+       .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
         }
-    .stat-box {
+       .stat-box {
             background: #0a0a0a;
             padding: 25px;
             border-radius: 15px;
@@ -248,47 +249,47 @@
             text-align: center;
             transition: all 0.3s;
         }
-    .stat-box:hover {
+       .stat-box:hover {
             border-color: #ff0040;
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(255, 0, 64, 0.3);
         }
-    .stat-box.number {
+       .stat-box.number {
             font-size: 2.5rem;
             font-weight: 900;
             color: #ff0040;
             display: block;
             text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-    .stat-box.label {
+       .stat-box.label {
             color: #888;
             font-size: 1rem;
             margin-top: 8px;
         }
 
-    .page-title {
+       .page-title {
             text-align: center;
             margin-bottom: 40px;
         }
-    .page-title h2 {
+       .page-title h2 {
             color: #ff0040;
             font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 12px;
             text-shadow: 0 0 30px rgba(255, 0, 64, 0.8);
         }
-    .page-title p {
+       .page-title p {
             color: #888;
             font-size: 1.2rem;
         }
 
-    .categories {
+       .categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
-    .category-btn {
+       .category-btn {
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border: 3px solid #ff0040;
             border-radius: 20px;
@@ -297,31 +298,31 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-    .category-btn:hover {
+       .category-btn:hover {
             background: rgba(255, 0, 64, 0.1);
             transform: translateY(-8px);
             box-shadow: 0 15px 50px rgba(255, 0, 64, 0.4);
         }
-    .category-btn.icon {
+       .category-btn.icon {
             font-size: 3.5rem;
             margin-bottom: 20px;
             display: block;
             filter: drop-shadow(0 0 10px rgba(255, 0, 64, 0.8));
         }
-    .category-btn h3 {
+       .category-btn h3 {
             color: #ff0040;
             font-size: 1.4rem;
             font-weight: 700;
             text-shadow: 0 0 15px rgba(255, 0, 64, 0.6);
         }
 
-    .products-grid {
+       .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
-    .product {
+       .product {
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border: 3px solid #ff0040;
             border-radius: 20px;
@@ -329,41 +330,41 @@
             box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
             transition: all 0.3s;
         }
-    .product:hover {
+       .product:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 60px rgba(255, 0, 64, 0.5);
         }
-    .product-img {
+       .product-img {
             width: 100%;
             height: 220px;
             object-fit: cover;
         }
-    .product-content { padding: 30px; }
-    .product h3 {
+       .product-content { padding: 30px; }
+       .product h3 {
             color: #ff0040;
             margin-bottom: 15px;
             font-size: 1.6rem;
             font-weight: 700;
             text-shadow: 0 0 15px rgba(255, 0, 64, 0.6);
         }
-    .product p {
+       .product p {
             color: #b3b3b3;
             margin-bottom: 20px;
             font-size: 1.05rem;
             line-height: 1.8;
         }
-    .price {
+       .price {
             font-size: 2.3rem;
             color: #ff0040;
             font-weight: 900;
             margin: 20px 0;
             text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-    .price.free {
+       .price.free {
             color: #25D366;
             text-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
         }
-    .buy-btn {
+       .buy-btn {
             display: inline-block;
             background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
             color: #fff;
@@ -379,19 +380,19 @@
             box-shadow: 0 5px 25px rgba(255, 0, 64, 0.5);
             text-transform: uppercase;
         }
-    .buy-btn:hover {
+       .buy-btn:hover {
             transform: scale(1.03);
             box-shadow: 0 10px 40px rgba(255, 0, 64, 0.7);
         }
-    .buy-btn.free {
+       .buy-btn.free {
             background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
             box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
         }
-    .buy-btn.free:hover {
+       .buy-btn.free:hover {
             box-shadow: 0 10px 40px rgba(37, 211, 102, 0.7);
         }
 
-    .back-btn {
+       .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -406,12 +407,12 @@
             transition: all 0.3s;
             font-size: 1.05rem;
         }
-    .back-btn:hover {
+       .back-btn:hover {
             background: rgba(255, 0, 64, 0.15);
             box-shadow: 0 0 20px rgba(255, 0, 64, 0.4);
         }
 
-    .form-section {
+       .form-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border: 3px solid #ff0040;
             border-radius: 20px;
@@ -420,18 +421,18 @@
             display: none;
             box-shadow: 0 10px 40px rgba(255, 0, 64, 0.2);
         }
-    .form-section.show {
+       .form-section.show {
             display: block;
             animation: fadeIn 0.4s;
         }
-    .form-section h2 {
+       .form-section h2 {
             text-align: center;
             margin-bottom: 35px;
             color: #ff0040;
             font-size: 2rem;
             text-shadow: 0 0 20px rgba(255, 0, 64, 0.8);
         }
-    .close-form {
+       .close-form {
             float: left;
             background: #ff0040;
             color: #fff;
@@ -445,17 +446,17 @@
             box-shadow: 0 0 20px rgba(255, 0, 64, 0.6);
         }
 
-    .payment-info {
+       .payment-info {
             background: #0a0a0a;
             border: 2px solid #ff0040;
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 35px;
         }
-    .payment-info h3 { color: #ff0040; margin-bottom: 18px; font-size: 1.4rem; }
-    .payment-info p { margin-bottom: 12px; color: #d1d5db; font-size: 1.05rem; }
+       .payment-info h3 { color: #ff0040; margin-bottom: 18px; font-size: 1.4rem; }
+       .payment-info p { margin-bottom: 12px; color: #d1d5db; font-size: 1.05rem; }
 
-    .custom-form input,.custom-form select {
+       .custom-form input,.custom-form select {
             width: 100%;
             padding: 16px;
             margin-bottom: 22px;
@@ -467,25 +468,25 @@
             font-family: 'Cairo';
             transition: all 0.3s;
         }
-    .custom-form input:focus,.custom-form select:focus {
+       .custom-form input:focus,.custom-form select:focus {
             border-color: #ff0040;
             outline: none;
             box-shadow: 0 0 0 4px rgba(255, 0, 64, 0.15);
         }
-    .custom-form input[readonly] {
+       .custom-form input[readonly] {
             background: #0a0a0a;
             border-color: #ff0040;
             color: #ff0040;
             font-weight: 700;
         }
-    .custom-form label {
+       .custom-form label {
             display: block;
             margin-bottom: 10px;
             color: #d1d5db;
             font-weight: 600;
             font-size: 1.1rem;
         }
-    .submit-btn {
+       .submit-btn {
             width: 100%;
             padding: 18px;
             background: linear-gradient(135deg, #ff0040 0%, #cc0033 100%);
@@ -499,15 +500,15 @@
             box-shadow: 0 5px 30px rgba(255, 0, 64, 0.5);
             text-transform: uppercase;
         }
-    .submit-btn:hover {
+       .submit-btn:hover {
             transform: scale(1.03);
             box-shadow: 0 10px 50px rgba(255, 0, 64, 0.7);
         }
 
-    .recharge-field {
+       .recharge-field {
             display: block;
         }
-    .recharge-field.hide {
+       .recharge-field.hide {
             display: none;
         }
 
@@ -520,11 +521,11 @@
         }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-       .container { padding: 15px; }
-       .product-img { height: 200px; }
-       .hero { padding: 60px 15px; }
-       .dev-header { flex-direction: column; text-align: center; }
-       .categories { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+           .container { padding: 15px; }
+           .product-img { height: 200px; }
+           .hero { padding: 60px 15px; }
+           .dev-header { flex-direction: column; text-align: center; }
+           .categories { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
         }
     </style>
 </head>
@@ -610,6 +611,10 @@
                     <span class="icon">🎮</span>
                     <h3>Gamemodes<br>جيم مود</h3>
                 </div>
+                <div class="category-btn" onclick="showCategory('mappings')">
+                    <span class="icon">🗺️</span>
+                    <h3>Mappings<br>مابينج</h3>
+                </div>
                 <div class="category-btn" onclick="showCategory('textdraws')">
                     <span class="icon">🎨</span>
                     <h3>Textdraws<br>تيكست درو</h3>
@@ -622,9 +627,9 @@
                     <span class="icon">💉</span>
                     <h3>Cleo<br>كليو</h3>
                 </div>
-                <div class="category-btn" onclick="showCategory('modpacks')">
-                    <span class="icon">📦</span>
-                    <h3>Modpacks<br>مود باك</h3>
+                <div class="category-btn" onclick="showCategory('AntiCheats')">
+                    <span class="icon">💊</span>
+                    <h3>AntiCheats<br> حماية من الهاك</h3>
                 </div>
             </div>
         </div>
@@ -687,15 +692,22 @@
                 {
                     name: "System Permis",
                     desc: "سيستم ما يمكنش تسوق تا يكون عندك بيرمي. حماية ضد السراقة",
-                    price: 15,
+                    price: 5,
                     img: "https://i.postimg.cc/XJrsKf0K/Screenshot-20260517-214453.jpg"
                 },
                 {
-                    name: "Bank System Free",
-                    desc: "سيستم البنك مجاني للجميع - كامل",
+                    name: "System Hunger",
+                    desc: "hunger Lost S2",
                     price: 0,
-                    download: "https://files.catbox.moe/putyourfile.zip", // بدل هاد الرابط
-                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Bank+System+FREE"
+                    download: "https://files.catbox.moe/3f67d5",
+                    img: "https://i.postimg.cc/G2YSTmmZ/Screenshot-20260212-174650-Whats-App.jpg"
+                },
+                {
+                    name: "Inventory System",
+                    desc: "سيستم محفضة (inventory) fivem في Samp",
+                    price: 0,
+                    download: "https://files.catbox.moe/0istm2.zip",
+                    img: "https://i.postimg.cc/8c0XffVC/1f4f731900adc604cfed5db8f5b7ac46.jpg"
                 }
             ],
             gamemodes: [
@@ -703,17 +715,26 @@
                     name: "Soon gm",
                     desc: "",
                     price: 0,
-                    download: "", // حط رابط التحميل هنا
+                    download: "",
                     img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=RP+Gamemode+FREE"
+                }
+            ],
+            mappings: [
+                {
+                    name: "Mapping Gang House",
+                    desc: "قرية صغيرة خاصة ب العصابات و يمكن استعمالها لناس .",
+                    price: 0,
+                    download: "https://files.catbox.moe/bjztf9.txt",                     img:"https://i.postimg.cc/xjh4FsfP/IMG-6153.jpg"
+                   
                 }
             ],
             textdraws: [
                 {
-                    name: "Soon",
-                    desc: "",
+                    name: "Textdraw Handphone",
+                    desc: "تيكس دراو هاتف ولاكن بدون سيسم اذا ارضت سيستم الخاص به يرجى التواصل معنى لصنعه لك :  787191554",
                     price: 0,
-                    download: "", // حط رابط التحميل هنا
-                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Modern+HUD"
+                    download: "https://files.catbox.moe/223uw3.txt",
+                    img: "https://i.postimg.cc/xd07yW68/sa-mp-000.png"
                 }
             ],
             lua: [
@@ -721,8 +742,15 @@
                     name: "Pc Style Zomm +monetloder small",
                     desc: "يمكنك تحكم في شاشة الهاتف (zomm) + monetloder صغير [By WindyScripts]",
                     price: 0,
-                    download: "https://www.mediafire.com/file/8dbnftsx5l9uk8y/PC+STYLE+FOV+MOBILE+SAMP.zip/file", // حط رابط التحميل هنا
+                    download: "https://www.mediafire.com/file/8dbnftsx5l9uk8y/PC+STYLE+FOV+MOBILE+SAMP.zip/file",
                     img: "https://i.postimg.cc/GpcrFwCH/Screenshot-20251014-224200-You-Tube.jpg"
+                },
+                {
+                    name: "Hack Auto-Owner",
+                    desc: " هاك اخد مشرف في السيرفر بدون كود ادمن لكن يعمل في السيرفرات الذي ليس فيها حماية  [By WindyScripts]",
+                    price: 5,
+                    
+                    img: "https://files.catbox.moe/zyy2up.png"
                 }
             ],
             cleo: [
@@ -730,17 +758,23 @@
                     name: "Soon",
                     desc: "",
                     price: 0,
-                    download: "", // حط رابط التحميل هنا
+                    download: "",
                     img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Cleo+Mod"
                 }
             ],
-            modpacks: [
+            AntiCheats: [
                 {
-                    name: "Soon",
-                    desc: "",
+                    name: "AntiDdos",
+                    desc: "حماية من قفل السيرفر بالهاك لكن هادا (Pro) crashfix.so.   تركيب في (Plugins)",
                     price: 0,
-                    download: "", // حط رابط التحميل هنا
-                    img: "https://via.placeholder.com/400x200/ff0040/ffffff?text=Modpack+2026"
+                    download: "https://files.catbox.moe/ne6k4i.so",
+                    img: "https://files.catbox.moe/zyy2up.png"
+                },
+                {
+                    name: "AntiDdos",
+                    desc: "حماية من قفل السيرفر بالهاك لكن هادا (Vip) Sky.so.     تركيب في (Plugins)",
+                    price: 5,
+                    img: "https://files.catbox.moe/zyy2up.png"
                 }
             ]
         };
@@ -807,10 +841,8 @@
 
         function handleBuy(productName, price, downloadLink) {
             if(price === 0 && downloadLink) {
-                // إلا فابور + عندو رابط = تيليشارجي ديريكت
                 window.open(downloadLink, '_blank');
             } else {
-                // إلا بالفلوس = حل الفورم
                 showForm(productName, price);
             }
         }
